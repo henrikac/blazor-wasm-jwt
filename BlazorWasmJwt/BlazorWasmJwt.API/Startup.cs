@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlazorWasmJwt.Core.Profiles;
+using BlazorWasmJwt.Core.Repositories;
 using BlazorWasmJwt.DAL;
+using BlazorWasmJwt.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +35,8 @@ namespace BlazorWasmJwt.API
                 options.UseNpgsql(Configuration.GetConnectionString("BlazorJwtContext"),
                 assembly => assembly.MigrationsAssembly(typeof(BlazorJwtContext).Assembly.FullName))
             );
+
+            services.AddAutoMapper(typeof(UserProfile));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
