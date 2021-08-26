@@ -38,6 +38,8 @@ namespace BlazorWasmJwt.API
 
             services.AddAutoMapper(typeof(UserProfile));
 
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

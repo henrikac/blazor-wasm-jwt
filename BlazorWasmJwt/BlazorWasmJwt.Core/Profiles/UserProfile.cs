@@ -8,6 +8,7 @@ namespace BlazorWasmJwt.Core.Profiles
     {
         public UserProfile()
         {
+            CreateMap<User, UserReadDto>();
             CreateMap<UserCreateDto, User>();
         }
     }
