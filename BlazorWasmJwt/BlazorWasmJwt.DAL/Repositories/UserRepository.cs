@@ -19,6 +19,11 @@ namespace BlazorWasmJwt.DAL.Repositories
             _mapper = mapper;
         }
 
+        public async Task<User> FindByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(user => user.Email == email);
+        }
+
         public async Task<User> CreateAsync(UserCreateDto model)
         {
             User emailExist = await _context.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == model.Email.ToUpper());
